@@ -7,6 +7,7 @@ import sequelize from "./database/database";
 //Routes
 import ApplicationRoutes from "./routes/Application/ApplicationRoutes";
 import AccessTokenRoutes from "./routes/AccessToken/AccessTokenRoutes";
+import UserRoutes from "./routes/User/UserRoutes";
 
 const app: Application = express();
 
@@ -24,6 +25,8 @@ app.use("/doc", swaggerUi.serve, swaggerUi.setup(swaggerConfig));
 app.use("/api/v1/", ApplicationRoutes);
 
 app.use("/api/v1/", AccessTokenRoutes);
+
+app.use("/api/v1/", UserRoutes);
 
 app.listen(PORT, () => {
   console.log(`Application Running`);

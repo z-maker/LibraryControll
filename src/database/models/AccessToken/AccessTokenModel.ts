@@ -74,5 +74,9 @@ AccessTokenModel.hasOne(UserModel, {
   foreignKey: "tokenId",
   as: "user",
 });
+UserModel.belongsTo(AccessTokenModel,{
+  foreignKey:"tokenId",
+  as:"token"
+})
 
 export default AccessTokenModel;

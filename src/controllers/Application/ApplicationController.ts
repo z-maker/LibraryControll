@@ -36,21 +36,6 @@ export const get = async (req: Request, res: Response) => {
 export const getById = async (req: Request, res: Response) => {
   const { id } = req.params;
 
-  const token = await AccessTokenModel.create({
-    token:randomUUID(),
-    expires:new Date("2021/02/12"),
-    applicationId:Number.parseInt(id)
-  })
-
-  const user = await UserModel.create({
-    uuid:randomUUID(),
-    name:"Angel",
-    email:"angel@gmail.com",
-    password:"admin",
-    tokenId:token.id
-  })
-
-
   ApplicationModel.findOne({ where: { id: { [Op.eq]: id } },include:[ApplicationModel.associations.access_tokens] })
     .then((results) => {
 

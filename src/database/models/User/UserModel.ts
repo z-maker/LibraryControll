@@ -29,6 +29,11 @@ class UserModel extends Model<UserAttr, UserCreationAttr> implements UserAttr {
   email!: string;
   password!: string;
   tokenId!:number;
+
+  public static associations: {
+    token: Association<UserModel,AccessTokenModel>;
+  };
+
 }
 
 UserModel.init({
@@ -49,6 +54,7 @@ UserModel.init({
   email: {
     type: DataTypes.STRING,
     allowNull: false,
+    unique:true
   },
   password: {
     type: DataTypes.STRING,
